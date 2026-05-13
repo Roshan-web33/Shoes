@@ -3,7 +3,7 @@ import Navbar from './component/Navbar'
 import AddToCart from './component/AddToCart'
 
 import './App.css'
-import Shoes from './component/shoes'
+import Shoes from './component/Shoes'
 import Payment from './component/Payment'
 import { useContext } from 'react'
 import { PaymentContext } from './context/PaymentContext'
