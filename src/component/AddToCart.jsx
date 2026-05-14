@@ -6,7 +6,8 @@ import Payment from './Payment'
 
 
 const AddToCart = ({ cart, setCart }) => {
- const { setShowPayment } = useContext(PaymentContext);
+
+ const { showPayment, setShowPayment } = useContext(PaymentContext);
 
 const increaseQty = (item) => {
   setCart(
@@ -63,9 +64,9 @@ const total = cart.reduce(
 
         <button
   className='payment-btn'
-  onClick={() => setShowPayment(true)}
+  onClick={() => setShowPayment(prev => !prev)}
 >
-  PAYMENT NOW
+ {showPayment ? "BACK TO HOME" : "PAYMENT NOW"}
 </button>
     </div>
 
