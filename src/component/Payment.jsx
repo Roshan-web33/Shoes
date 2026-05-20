@@ -1,62 +1,77 @@
-import React from 'react'
-import { useState } from 'react'
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Payment = () => {
-  
-  
+  const [paymentMethod, setPaymentMethod] = useState("");
 
-  const [cod, setCod] = useState(false);
-  const [credit, setCredit] = useState(false);
+  const handleClick = (e) => {
+    e.preventDefault();
+    alert("Congratutions! your oder is confired");
+
+     navigate("/");
+  };
 
   return (
-    <div className='form-conteinter'>
+    <div className="form-container">
       <h2>Payment Page</h2>
-
-     
 
       {/* Payment Options */}
       <div>
-        <input
-          type="checkbox"
-          checked={cod}
-          onChange={() => {
-            setCod(!cod);
-            setCredit(false);
-          }}
-        />
-        COD
+        <label>
+          <input
+            type="radio"
+            name="payment"
+            checked={paymentMethod === "cod"}
+            onChange={() => setPaymentMethod("cod")}
+          />
+          COD
+        </label>
 
-        <input
-          type="checkbox"
-          checked={credit}
-          onChange={() => {
-            setCredit(!credit);
-            setCod(false);
-          }}
-        />
-        Credit Card
+        <label>
+          <input
+            type="radio"
+            name="payment"
+            checked={paymentMethod === "credit"}
+            onChange={() => setPaymentMethod("credit")}
+          />
+          Credit Card
+        </label>
       </div>
 
-      {/* COD Form */}
-      {cod && (
-        <div className='cod'>
-          <input placeholder="Phone" />
-          <input placeholder="Address" />
-          <button>Order Now</button>
-        </div>
+    
+      {paymentMethod === "cod" && (
+        <form className="cod" onSubmit={handleClick}>
+          <input type="text" placeholder="Phone" required />
+          <input type="text" placeholder="Address" required />
+
+          <button type="submit">Order Now</button>
+        </form>
       )}
 
-      {/* Credit Card Form */}
-      {credit && (
-        <div className='credit'>
-          <input placeholder="Card Number" />
-          <input placeholder="Expiry" />
-          <input placeholder="CVV" />
-          <button>Pay Now</button>
-        </div>
+
+      {paymentMethod === "credit" && (
+        <form className="credit" onSubmit={handleClick}>
+          <input
+            type="text"
+            minLength={14}
+            maxLength={16}
+            placeholder="Card Number"
+            required
+          />
+
+          <input type="text" placeholder="Expiry" required />
+
+          <input
+            type="password"
+            maxLength={3}
+            placeholder="CVV"
+            required
+          />
+
+          <button type="submit">Pay Now</button>
+        </form>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Payment
+export default Payment;

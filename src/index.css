@@ -3,9 +3,7 @@
   padding: 0;
 }
 
-html body{
-
-
+body{
   background-color: black;
   color: white;
 }
@@ -197,4 +195,23 @@ nav > ul >li > a {
   border-radius: 2.5rem;
   font-weight: bold;
   color: white;
+}
+
+
+
+/* .container{
+  padding: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+} */
+
+@media(min-width: 1024px) {
+
+  .container{
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
 }
