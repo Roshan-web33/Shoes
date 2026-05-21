@@ -1,32 +1,26 @@
 import { useState } from 'react'
-import Navbar from './component/Navbar'
-import AddToCart from './component/AddToCart'
+
+import { Routes, Route } from "react-router-dom";
+
+
 
 import './App.css'
-import Shoes from './component/Shoes'
-import Payment from './component/Payment'
-import { useContext } from 'react'
-import { PaymentContext } from './context/PaymentContext'
+import Home from './Home';
+import Payment from './component/Payment';
 
 
 
 function App() {
-  const [cart, setCart] = useState([]);
-  const { showPayment } = useContext(PaymentContext);
-
+  
   return (
-    <>
-    <Navbar/>
-    <AddToCart cart={cart} setCart={setCart} />
 
-     {!showPayment ? (
+    
     <>
-      <Shoes cart={cart} setCart={setCart} />
-      
-    </>
-  ) : (
-    <Payment />
-  )}
+     <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/payment" element={<Payment />} />
+    </Routes>
+   
     </>
   )
 }
