@@ -4,10 +4,8 @@ import AddToCart from './component/AddToCart'
 import Shoes from './component/Shoes'
 import { PaymentContext } from './context/PaymentContext'
 
-const Home = () => {
+const Home = ({ cart, setCart }) => {
 
-  const [cart, setCart] = useState([]);
-  const { showPayment } = useContext(PaymentContext);
 
   return (
     <>
@@ -16,6 +14,8 @@ const Home = () => {
       <AddToCart cart={cart} setCart={setCart} />
 
       <Shoes cart={cart} setCart={setCart} />
+
+      
     </>
   )
 }

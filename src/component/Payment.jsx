@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import AddToCart from "./AddToCart"
 import Navbar from "./Navbar";
 
-const Payment = () => {
+const Payment = ({ cart, setCart } ) => {
 
 
   const navigate = useNavigate();
@@ -22,7 +22,9 @@ const Payment = () => {
 
     alert("Congratulations! Your order is confirmed.");
 
-    // Reset fields
+    setCart([]);
+
+
     setPhone("");
     setAddress("");
     setCardNumber("");
@@ -142,7 +144,7 @@ const Payment = () => {
       )}
 
 
-      <AddToCart/>
+      <AddToCart cart={cart} setCart={setCart}/>
     </div>
 
         </>
