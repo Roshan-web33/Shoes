@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AddToCart from "./AddToCart"
-import Navbar from "./Navbar";
-
-const Payment = ({ cart, setCart } ) => {
 
 
-  const navigate = useNavigate();
+import { useContext } from "react";
+import { PaymentContext } from "../context/PaymentContext";
+
+const Payment = ({ cart, setCart }) => {
 
   const [paymentMethod, setPaymentMethod] = useState("");
+    const { setShowPayment } = useContext(PaymentContext);
 
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -32,13 +31,13 @@ const Payment = ({ cart, setCart } ) => {
     setCvv("");
     setPaymentMethod("");
 
-    navigate("/");
+    
+  setShowPayment(false);
   };
-
   return (
     <>
 
-  <Navbar/>
+      {/* <Navbar/> */}
     <div className="form-container">
       <h2>Payment Page</h2>
 
@@ -138,17 +137,18 @@ const Payment = ({ cart, setCart } ) => {
             required
           />
 
-          <button type="submit">Pay Now</button>
+          <button   type="submit">Pay Now</button>
 
         </form>
       )}
 
 
-      <AddToCart cart={cart} setCart={setCart}/>
+      {/* <AddToCart cart={cart} setCart={setCart}/> */}
     </div>
 
         </>
-  );
+  )
+
 };
 
 export default Payment;
